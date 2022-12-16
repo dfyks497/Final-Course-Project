@@ -1,0 +1,176 @@
+<!--@author Dennis Fyksen-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Quote</title>
+    <link rel="Stylesheet" href="main.css">
+</head>
+
+<body>
+    <header>
+        <div class="banner"> <a href=index.html><img src="./images/image.jpg" alt="3D Printer" width="100"
+                    height="100"></a>
+            <h1>
+                Custom 3D Objects
+            </h1>
+        </div>
+        <div class="navBar">
+            <a href="index.html">Home</a>
+            <div class="dropdownMenu">
+                <a href="aboutUs.html">About Us</a>
+                <div class="dropdownItems">
+                    <a href="./about/faqs.html">FAQs</a>
+                    <a href="./about/gallery.html">Gallery</a>
+                </div>
+            </div>
+            <a class="navCurrentPage" href="requestQuote.html">Request Quote</a>
+        </div>
+    </header>
+    <div class="h2Div">
+        <h2>
+            Request a Quote Here!
+        </h2>
+    </div>
+    <main id="requestMain">
+        <script>
+            function formValidation() {
+                var comments = document.getElementById("comments").value;
+                var userUpload = document.getElementById("userUpload").value;
+                if (comments == "") {
+                    alert("You must provide additional details in the summary box below!");
+                    return false;
+                }
+                if (userUpload == "") {
+                    alert("You must upload design/concept file!");
+                    return false;
+                } else {
+                    alert("Thanks! Your request has been successfully submitted!\nReturning you to home page...")
+                    return true;
+                }
+            }
+        </script>
+        <form method="POST" action="index.html" onsubmit="return formValidation()">
+            <div id="requestFormDiv">
+                <div id="requestFormDivLeft">
+                    <fieldset>
+                        <legend>Contact Information</legend>
+                        <label for="name">Name<em>*</em></label>
+                        <input id="name" name="name" type="text" required><br>
+                        <label for="telephone">Telephone<em>*</em></label>
+                        <input id="telephone" name="telephone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            placeholder="xxx-xxx-xxx" type="tel" required><br>
+                        <label for="email">Email<em>*</em></label>
+                        <input id="email" name="email" type="email" required>
+                    </fieldset>
+
+                    <fieldset class="fieldsetVertical">
+                        <legend>What Service(s) Are You Requesting?</legend>
+                        <label for="print"><input id="print" type="checkbox" name="group" value="printing">
+                            3D Printing</label>
+                        <label for="model"><input id="model" type="checkbox" name="group" value="modelling">
+                            3D Modelling</label>
+                        <label for="other"><input id="other" type="checkbox" name="group" value="otherService">
+                            Other (Please Specify In Summary)</label>
+                    </fieldset>
+
+                    <fieldset class="fieldsetVertical">
+                        <legend>What is the Intended Use of the Object(s)?</legend>
+                        <label for="deco"><input id="deco" type="radio" name="group" value="decorative">
+                            Decorative</label>
+                        <label for="func"><input id="func" type="radio" name="group" value="functional">
+                            Functional</label>
+                        <label for="both"><input id="both" type="radio" name="group" value="both">
+                            Both</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Order Details</legend>
+                        <label for="quantity">Quantity<em>*</em></label>
+                        <input class="numberInput" id="quantity" name="quantity" type="number" min="1" max="10"
+                            required>
+                        <label for="date">Deadline</label>
+                        <input type="date" id="date">
+                    </fieldset>
+                    <fieldset>
+                        <legend>Upload Relevant Design/Concept File(s)</legend>
+                        <input type="file" id="userUpload" name="userUpload" multiple>
+                        <label for="userUpload"><em>*</em></label>
+                    </fieldset>
+                </div>
+
+                <div id="requestFormDivRight">
+                    <fieldset>
+                        <legend>Object(s) Attributes</legend>
+                        <p><i>Input dimensions between 10 to 300 millimeters:</i></p>
+                        <label for="length">Length<em>*</em></label>
+                        <input class="numberInput" id="length" name="length" type="number" min="10" max="300" required>
+                        <label for="width">Width<em>*</em></label>
+                        <input class="numberInput" id="width" name="width" type="number" min="10" max="300" required>
+                        <label for="height">Height<em>*</em></label>
+                        <input class="numberInput" id="height" name="height" type="number" min="10" max="300" required>
+                        <p><i>Please choose filament material (if printing):</i></p>
+                        <select id="material" name="material">
+                            <option value="none">None</option>
+                            <optgroup label="Standard filaments">
+                                <option value="abs">ABS</option>
+                                <option value="asa">ASA</option>
+                                <option value="hdpe">HDPE</option>
+                                <option value="hips">HIPS</option>
+                                <option value="nylon">Nylon</option>
+                                <option value="pc">PC</option>
+                                <option value="pet">PET</option>
+                                <option value="petg">PETG</option>
+                                <option value="pett">PETT</option>
+                                <option value="pla">PLA</option>
+                                <option value="pp">PP</option>
+                                <option value="pva">PVA</option>
+                                <option value="tpe">TPE</option>
+                                <option value="tpu">TPU</option>
+                            </optgroup>
+                            <optgroup label="Special filaments">
+                                <option value="amphora">Amphora</option>
+                                <option value="carbonFiber">Carbon Fiber</option>
+                                <option value="conductive">Conductive</option>
+                                <option value="glowInDark">Glow in Dark</option>
+                                <option value="magneticIron">Magnetic Iron</option>
+                                <option value="metal">Metal</option>
+                                <option value="sandstone">Sandstone</option>
+                                <option value="wood">Wood</option>
+                            </optgroup>
+                        </select> <br>
+                        <p><i>Please select desired color of object(s):</i></p>
+                        <input type="color" id="objectColor" name="objectColor" value="#000000">
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            Please Summarize Your Request
+                        </legend>
+                        <p><i>Provide addtional details for your request below:<em>*</em></i></p>
+                        <textarea id="comments" name="comments"></textarea>
+                    </fieldset>
+                </div>
+            </div>
+            <div id="requestFormButtons">
+                <input class="buttons" type="submit" value="Submit">
+                <input class="buttons" type="reset" value="Reset">
+            </div>
+        </form>
+
+    </main>
+    <div>
+        <ul class="navBarSub">
+            <li><a href="index.html">Home</a> > </li>
+            <li>Request Quote</li>
+        </ul>
+    </div>
+    <footer>
+        UWSP - 2100 Main St - Stevens Point, WI 54481 <br>
+        Copyright &copy; 2022. All rights reserved.
+    </footer>
+</body>
+
+</html>
